@@ -1,0 +1,18 @@
+# GitHub Pages 配置
+title: iGuard - iOS SDK 源码加固
+description: 基于虚拟机技术的下一代代码保护方案
+theme: jekyll-theme-minimal
+show_downloads: false
+
+# 导航
+navigation:
+  - title: 功能特性
+    url: #features
+  - title: 源码示例
+    url: #source-code
+  - title: 效果对比
+    url: #comparison
+  - title: 使用说明
+    url: #usage
+  - title: 技术优势
+    url: #tech

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[iGuard] iOS SDK 源码加固 - 专业代码保护解决方案</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">iGuard</div>
+            <ul class="nav-menu">
+                <li><a href="#features">功能特性</a></li>
+                <li><a href="#source-code">源码示例</a></li>
+                <li><a href="#comparison">效果对比</a></li>
+                <li><a href="#source-macho">源码与原始 Mach-O</a></li>
+                <li><a href="#usage">使用说明</a></li>
+                <li><a href="#tech">技术优势</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">iOS SDK 源码加固</h1>
+            <p class="hero-subtitle">基于虚拟机技术的下一代代码保护方案</p>
+            <p class="hero-description">
+                针对 iOS SDK 源码进行深度混淆、加固，使用独创的虚拟机技术对代码进行加密保护，
+                提高逆向、破解难度。保护您的核心业务逻辑和知识产权。
+            </p>
+            <div class="hero-buttons">
+                <a href="mailto:support@anti.xin" class="btn btn-primary">联系邮箱：support@anti.xin</a>
+                <a href="#features" class="btn btn-secondary">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <p class="section-subtitle">三大保护技术，全方位守护您的代码安全</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔀</div>
+                    <h3 class="feature-title">代码逻辑混淆</h3>
+                    <p class="feature-description">
+                        通过将原始代码的控制流进行切分、打乱、隐藏，或在函数中插入花指令来实现对代码的混淆，
+                        使代码逻辑复杂化但不影响原始代码逻辑。控制流图变得十分复杂，包含大量不会被执行到的无用代码块，
+                        以及相互间的逻辑跳转，逆向分析难度大幅提升。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3 class="feature-title">字符串加密</h3>
+                    <p class="feature-description">
+                        对代码中的字符串字面量进行加密处理，在运行时动态解密。即使使用 IDA Pro、Hopper 等工具进行反编译，
+                        也无法直接看到明文字符串，有效防止关键信息泄露，如 API 密钥、业务逻辑标识等敏感字符串。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">代码虚拟化保护 (VMP)</h3>
+                    <h4>(仅支持 XCode12 版本)</h5>
+                        <p class="feature-description">
+                            使用独创的虚拟机技术，将原生代码转换为虚拟指令集，通过专用解释器执行。
+                            配合随机化和加密机制，使得逆向分析变得极其困难。即使使用专业的反编译工具，
+                            也只能看到解释器层面的代码，而无法还原原始逻辑。
+                        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 源码展示 -->
+    <section id="source-code" class="source-code">
+        <div class="container">
+
+        </div>
+    </section>
+
+    <!-- 原始 Mach-O -->
+    <section id="source-macho" class="comparison">
+        <div class="container">
+            <h2 class="section-title">原始 Mach-O</h2>
+            <div class="code-block-wrapper">
+                <button class="code-toggle-btn" onclick="toggleCode(this)">查看源码</button>
+                <div class="code-block code-block-simple code-block-collapsible">
+                    <pre><code>- (NSString *)obfSwiftCalcWithUser:(NSString *)user token:(NSString *)token {
+    // xse：字符串加密
+    NSString *url = @"https://pay.example.com/process";
+    NSString *key = @"TOKEN-SECRET-2024";
+    NSString *msg = @"access denied";
+
+    // sub：算术与位运算密集
+    uint32_t mix = ((uint32_t)(0 * 4)) ^ 0xFFFFFFFFU;
+    mix = mix ^ ((uint32_t)(token.length * 97)) ^ 0x5A5A3C3CU;
+    
+    // obf/level：分支混合
+    if ((mix % 2) == 0) {
+        return [NSString stringWithFormat:@"%@|OK|%@", url, key];
+    } else {
+        return [NSString stringWithFormat:@"%@|%@", url, msg];
+    }
+}</code></pre>
+                </div>
+            </div>
+            <div class="comparison-after">
+                <h3>原始 Mach-O（IDA）截图</h3>
+                <img class="comparison-image" src="images/原始macho.png" alt="原始 Mach-O IDA 截图">
+                <p class="comparison-note">
+                    展示未加固的 Mach-O 在 IDA 中的反编译效果，作为基线参考。
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 效果对比 -->
+    <section id="comparison" class="comparison">
+        <div class="container">
+            <h2 class="section-title">保护效果展示</h2>
+            <p class="section-subtitle">使用 IDA Pro 反编译分析，直观展示加固后的保护效果</p>
+
+            <div class="comparison-tabs">
+                <button class="tab-btn active" data-tab="control-flow">控制流图</button>
+                <button class="tab-btn" data-tab="decompile">反编译代码</button>
+                <button class="tab-btn" data-tab="strings">字符串</button>
+                <button class="tab-btn" data-tab="vmp">VMP 保护</button>
+            </div>
+
+            <!-- 控制流图对比 -->
+            <div class="tab-content active" id="control-flow">
+                <div class="comparison-after">
+                    <h3>加固后（混合展示）</h3>
+                    <img class="comparison-image" src="images/控制流-后.png" alt="控制流图（混合展示）">
+                    <p class="comparison-note">
+                        混合展示包含多种控制流改写方式（平坦化、虚假分支、替换、隐藏等），整体结构复杂且难以还原。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 反编译代码对比 -->
+            <div class="tab-content" id="decompile">
+                <div class="comparison-after">
+                    <h3>加固后</h3>
+                    <div class="image-placeholder">
+                        <img class="comparison-image" src="images/反编译-后.png" alt="反编译代码（加固后）">
+                    </div>
+                    <p class="comparison-note">
+                        反编译代码被严重混淆，包含大量无用指令和复杂跳转，字符串被加密，无法直接理解代码逻辑。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 字符串对比 -->
+            <div class="tab-content" id="strings">
+                <div class="comparison-after">
+                    <h3>加固后</h3>
+                    <div class="image-placeholder">
+                        <img class="comparison-image" src="images/字符串-后.png" alt="字符串列表（加固后）">
+                    </div>
+                    <p class="comparison-note">
+                        敏感字符串被加密处理，字符串列表中无法直接看到明文，只有在运行时才会动态解密。
+                    </p>
+                </div>
+            </div>
+
+            <!-- VMP 保护效果 -->
+            <div class="tab-content" id="vmp">
+                <div class="comparison-after">
+                    <h3>VMP 保护后</h3>
+                    <div class="image-placeholder">
+                        <img class="comparison-image" src="images/vmp.png" alt="VMP 保护效果">
+                    </div>
+                    <p class="comparison-note">
+                        使用虚拟机保护 (VMP) 技术后，原始代码被转换为虚拟指令集。即使使用 IDA Pro 等专业反编译工具，
+                        也只能看到解释器层面的代码，而无法还原原始的业务逻辑。代码被完全虚拟化，逆向分析变得极其困难。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 使用说明 -->
+    <section id="usage" class="usage">
+        <div class="container">
+            <h2 class="section-title">使用说明</h2>
+            <p class="section-subtitle">手动加固服务，专业团队为您提供定制化保护方案</p>
+
+            <div class="contact-box">
+                <div class="contact-icon">📧</div>
+                <h3>联系邮箱</h3>
+                <p class="contact-email">
+                    <a href="mailto:support@anti.xin">support@anti.xin</a>
+                </p>
+                <p class="contact-description">
+                    请发送邮件至上述邮箱，我们的技术团队将在 24 小时内与您联系，为您提供专业的加固服务。
+                </p>
+            </div>
+
+            <div class="usage-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>准备源码</h3>
+                        <p><strong>重要：必须提供完整的源代码</strong>。将需要加固的 iOS SDK 源码组织为独立的 Framework 工程。建议使用 C/C++
+                            编写核心代码，以获得最佳的加固效果和稳定性。我们无法对已编译的二进制文件进行加固。</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>发送邮件申请</h3>
+                        <p>发送邮件至 <strong>support@anti.xin</strong>，邮件中请包含：项目简介、需要加固的代码范围、Xcode
+                            版本信息、联系方式等。我们的技术团队会评估您的需求并提供加固方案。</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>提供源码</h3>
+                        <p>确认加固方案后，请提供完整的源代码工程。我们会在安全的环境中进行加固处理，确保您的代码安全。加固完成后，我们会提供加固后的 Framework 和验证报告。</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>验收测试</h3>
+                        <p>收到加固后的 Framework 后，请进行完整的功能测试，确保所有功能正常工作。我们也会提供 IDA Pro 反编译对比报告，展示加固效果。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-requirements">
+                <h3>服务要求</h3>
+                <ul>
+                    <li>✅ <strong>必须提供完整源代码</strong>，不支持仅提供二进制文件</li>
+                    <li>✅ 支持 Xcode 14.1/14.2/15.0.1/15.3/15.4</li>
+                    <li>✅ 支持 X86/M1 架构 Mac</li>
+                    <li>✅ 建议使用 C/C++ 编写核心代码</li>
+                    <li>✅ 工程路径不能包含空格或中文</li>
+                    <li>✅ 使用 New Build System</li>
+                    <li>⚠️ 不支持对整个 App 进行加固，建议只加固核心 Framework</li>
+                    <li>⚠️ 仅支持手动加固服务，不提供自动化工具</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ 重要提示</h4>
+                <p>本服务仅支持手动加固，需要您提供完整的源代码。我们无法对已编译的二进制文件进行加固处理。请确保您拥有源代码的完整权限，并同意我们使用源代码进行加固处理。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术优势 -->
+    <section id="tech" class="tech">
+        <div class="container">
+            <h2 class="section-title">技术优势</h2>
+            <p class="section-subtitle">基于编译时深度代码保护技术</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>🔧 编译时保护</h3>
+                    <p>在编译阶段进行代码转换和保护，不影响运行时性能。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🎲 随机化机制</h3>
+                    <p>每次编译使用不同的保护策略和映射关系，增加逆向难度。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🔒 多层加密</h3>
+                    <p>采用多层加密机制，防止静态分析和动态调试。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🌉 智能兼容</h3>
+                    <p>自动处理与外部系统的交互，保持完整的功能兼容性。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>⚡ 性能优化</h3>
+                    <p>针对核心代码进行保护，最小化性能影响，保持 SDK 的高效运行。</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🔄 版本兼容</h3>
+                    <p>支持多个 Xcode 版本，确保在不同环境下稳定运行。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保护原理 -->
+    <section class="principle">
+        <div class="container">
+            <h2 class="section-title">VMP 保护原理</h2>
+            <p class="section-subtitle">虚拟机保护 (VMP) 技术详解</p>
+
+            <div class="principle-flow">
+                <div class="flow-step">
+                    <div class="flow-icon">📝</div>
+                    <h4>源码编译</h4>
+                    <p>原始代码编译为中间表示</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">🔄</div>
+                    <h4>代码转换</h4>
+                    <p>将代码转换为虚拟指令集</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">🎲</div>
+                    <h4>随机化处理</h4>
+                    <p>应用随机化策略，生成唯一保护方案</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">🔐</div>
+                    <h4>加密处理</h4>
+                    <p>对虚拟指令和解释器进行加密，嵌入到二进制</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">▶️</div>
+                    <h4>运行时执行</h4>
+                    <p>解释器解密并执行虚拟指令</p>
+                </div>
+            </div>
+
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 iGuard SDK 加固解决方案. 保护您的代码，守护您的知识产权.</p>
+        </div>
+    </footer>
+
+    <!-- 图片放大模态框 -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage">
+        <div class="image-modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
