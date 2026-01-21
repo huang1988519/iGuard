@@ -50,6 +50,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 移动端导航折叠
+    const navToggle = document.querySelector('.nav-toggle');
+    const navbarEl = document.querySelector('.navbar');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navbarEl && navMenu) {
+        const closeMenu = () => {
+            navbarEl.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navbarEl.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // 点击菜单项后自动收起
+        navMenu.querySelectorAll('a[href^=\"#\"]').forEach(a => {
+            a.addEventListener('click', () => closeMenu());
+        });
+
+        // 点击页面空白处收起
+        document.addEventListener('click', (e) => {
+            if (navbarEl.classList.contains('nav-open') && !navbarEl.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // 旋转/变宽后自动收起，避免布局错乱
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) closeMenu();
+        });
+    }
+
     // 导航栏滚动效果
     let lastScroll = 0;
     const navbar = document.querySelector('.navbar');
