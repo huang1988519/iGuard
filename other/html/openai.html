@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iGuard Docs</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="stylesheet" href="openai-style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="openai.html">
+        <span class="brand-dot"></span>
+        <span class="brand-name">iGuard</span>
+        <span class="brand-sub">Docs</span>
+      </a>
+
+      <div class="topbar-actions">
+        <button class="btn btn-ghost mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu">
+          ☰
+        </button>
+
+        <div class="lang-toggle" role="tablist" aria-label="Language toggle">
+          <button class="lang-btn" data-lang="zh" type="button">中文</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+
+        <a class="btn btn-primary" id="ctaEmail" href="mailto:support@anti.xin">support@anti.xin</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title" data-i18n="nav.title">Overview</div>
+        <div class="sidebar-note" data-i18n="nav.note">Compile-time protection for iOS SDK source</div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item" href="#overview" data-i18n="nav.overview">Overview</a>
+        <a class="nav-item" href="#features" data-i18n="nav.features">Features</a>
+        <a class="nav-item" href="#workflow" data-i18n="nav.workflow">Workflow</a>
+        <a class="nav-item" href="#requirements" data-i18n="nav.requirements">Requirements</a>
+        <a class="nav-item" href="#effects" data-i18n="nav.effects">Protection effects</a>
+        <a class="nav-item" href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a class="nav-item" href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="pill" data-i18n="pill.manual">Manual service</div>
+        <div class="pill pill-muted" data-i18n="pill.source">Source required</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="hero" id="overview">
+        <div class="hero-kicker" data-i18n="hero.kicker">iOS SDK Source Protection</div>
+        <h1 class="hero-title" data-i18n="hero.title">Protect what matters: your SDK logic</h1>
+        <p class="hero-desc" data-i18n="hero.desc">
+          iGuard provides compile-time protection for iOS framework source code. We offer a manual hardening service to
+          help increase the cost of reverse engineering while keeping runtime behavior unchanged.
+        </p>
+
+        <div class="hero-callouts">
+          <div class="callout">
+            <div class="callout-title" data-i18n="callouts.c1t">Source-first</div>
+            <div class="callout-desc" data-i18n="callouts.c1d">Works on source code. No binary-only hardening.</div>
+          </div>
+          <div class="callout">
+            <div class="callout-title" data-i18n="callouts.c2t">Targeted</div>
+            <div class="callout-desc" data-i18n="callouts.c2d">Focus on core frameworks, minimize integration risk.</div>
+          </div>
+          <div class="callout">
+            <div class="callout-title" data-i18n="callouts.c3t">Report</div>
+            <div class="callout-desc" data-i18n="callouts.c3d">Provide effect screenshots and verification notes.</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact" data-i18n="hero.primary">Contact</a>
+          <a class="btn btn-ghost" href="#features" data-i18n="hero.secondary">See features</a>
+        </div>
+      </header>
+
+      <section class="section" id="features">
+        <h2 class="h2" data-i18n="features.title">Features</h2>
+        <p class="p" data-i18n="features.desc">
+          Multiple layers of protection. Choose what you need for your SDK and threat model.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">🔀</div>
+            <div class="card-title" data-i18n="features.f1t">Control-flow hardening</div>
+            <div class="card-desc" data-i18n="features.f1d">Increase analysis complexity via control-flow transformations.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔐</div>
+            <div class="card-title" data-i18n="features.f2t">String protection</div>
+            <div class="card-desc" data-i18n="features.f2d">Reduce plaintext exposure of sensitive constants.</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧩</div>
+            <div class="card-title" data-i18n="features.f3t">Compatibility-focused</div>
+            <div class="card-desc" data-i18n="features.f3d">Designed to keep ABI and runtime behavior stable.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <h2 class="h2" data-i18n="workflow.title">Workflow</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title" data-i18n="workflow.s1t">Prepare source</div>
+              <div class="step-desc" data-i18n="workflow.s1d">Package your SDK as a standalone framework project.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title" data-i18n="workflow.s2t">Define scope</div>
+              <div class="step-desc" data-i18n="workflow.s2d">Mark sensitive modules/functions and performance constraints.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title" data-i18n="workflow.s3t">Hardening</div>
+              <div class="step-desc" data-i18n="workflow.s3d">Apply protection strategy and validate build output.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title" data-i18n="workflow.s4t">Delivery</div>
+              <div class="step-desc" data-i18n="workflow.s4d">Ship hardened framework + verification screenshots.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="requirements">
+        <h2 class="h2" data-i18n="req.title">Requirements</h2>
+        <div class="notice">
+          <div class="notice-title" data-i18n="req.noticeTitle">Important</div>
+          <div class="notice-desc" data-i18n="req.noticeDesc">
+            This is a manual service. You must provide source code. We do not harden binary-only artifacts.
+          </div>
+        </div>
+
+        <div class="xcode-versions">
+          <div class="xcode-title" data-i18n="req.xcodeTitle">Supported Xcode versions</div>
+          <div class="xcode-list">
+            <div class="xcode-item">Xcode 12.0 - 12.5</div>
+            <div class="xcode-item">Xcode 13.0 - 13.2.1</div>
+            <div class="xcode-item">Xcode 14.0 - 14.2</div>
+            <div class="xcode-item">Xcode 15.0 - 15.1</div>
+            <div class="xcode-item xcode-latest">Xcode 26.2 <span data-i18n="req.xcodeLatest">(Latest)</span></div>
+          </div>
+        </div>
+
+        <ul class="list">
+          <li data-i18n="req.r1">Provide full source code and buildable project.</li>
+          <li data-i18n="req.r2">Prefer protecting core frameworks, not the whole app.</li>
+          <li data-i18n="req.r3">Avoid spaces / non-ASCII characters in build paths.</li>
+          <li data-i18n="req.r4">New Build System recommended.</li>
+          <li data-i18n="req.r5">Support Intel (x86_64) / ARM architecture Mac.</li>
+          <li data-i18n="req.r6">Recommend using C/C++ for core code.</li>
+        </ul>
+
+        <div class="codecard">
+          <div class="codecard-title" data-i18n="req.sampleTitle">What to send</div>
+          <pre class="code"><code>Subject: iOS SDK hardening request
+
+1) SDK name & scope:
+2) Xcode version:
+3) Target iOS versions:
+4) Performance constraints:
+5) Contact info:
+6) Source delivery method:</code></pre>
+        </div>
+      </section>
+
+      <section class="section" id="effects">
+        <h2 class="h2" data-i18n="effects.title">Protection effects</h2>
+        <p class="p" data-i18n="effects.desc">Example screenshots (replace with your latest).</p>
+
+        <div class="img-grid">
+          <figure class="img-card">
+            <img src="images/控制流-后.png" alt="Control-flow" loading="lazy">
+            <figcaption data-i18n="effects.i1">Control-flow</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/反编译-后.png" alt="Decompile" loading="lazy">
+            <figcaption data-i18n="effects.i2">Decompile</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/字符串-后.png" alt="Strings" loading="lazy">
+            <figcaption data-i18n="effects.i3">Strings</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/原始macho.png" alt="Mach-O" loading="lazy">
+            <figcaption data-i18n="effects.i4">Original Mach-O</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="images/vmp.png" alt="VMP" loading="lazy">
+            <figcaption data-i18n="effects.i5">VMP</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <h2 class="h2" data-i18n="faq.title">FAQ</h2>
+        <details class="faq">
+          <summary data-i18n="faq.q1">Do you support binary-only protection?</summary>
+          <div class="faq-body" data-i18n="faq.a1">No. We require source code to apply compile-time protection.</div>
+        </details>
+        <details class="faq">
+          <summary data-i18n="faq.q2">Can you protect the whole app?</summary>
+          <div class="faq-body" data-i18n="faq.a2">We recommend protecting core frameworks to reduce integration risk.</div>
+        </details>
+        <details class="faq">
+          <summary data-i18n="faq.q3">What do I receive?</summary>
+          <div class="faq-body" data-i18n="faq.a3">A hardened framework, integration notes, and effect screenshots.</div>
+        </details>
+      </section>
+
+      <section class="section" id="contact">
+        <h2 class="h2" data-i18n="contact.title">Contact</h2>
+        <div class="contact-card">
+          <div class="contact-line">
+            <div class="contact-label" data-i18n="contact.emailLabel">Email</div>
+            <a class="contact-value" href="mailto:support@anti.xin">support@anti.xin</a>
+          </div>
+          <div class="contact-hint" data-i18n="contact.hint">
+            Share your project scope and Xcode version. We’ll reply within 24 hours.
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-left">© 2026 iGuard</div>
+          <div class="footer-right">
+            <a href="index.html" class="footer-link" data-i18n="footer.back">Back to classic page</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 图片放大模态框 -->
+  <div id="imgModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img class="img-modal-content" id="modalImage" alt="Enlarged image">
+    <div class="img-modal-caption" id="modalCaption"></div>
+  </div>
+
+  <script src="openai-style.js"></script>
+</body>
+</html>
+
